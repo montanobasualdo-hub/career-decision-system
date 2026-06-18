@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Orientación de Carrera - FINI Yapacaní</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sección de Bienvenida -->
+        <section id="welcome" class="section active">
+            <div class="welcome-content">
+                <h1>🎓 Sistema de Orientación de Carrera</h1>
+                <p class="subtitle">FINI Yapacaní - Encuentra tu Carrera Ideal</p>
+                <p class="description">
+                    Este sistema te ayudará a elegir la carrera más adecuada según tus aptitudes, 
+                    intereses y valores profesionales utilizando teoría de decisiones avanzada.
+                </p>
+                <div class="careers-preview">
+                    <h3>Carreras Disponibles:</h3>
+                    <ul>
+                        <li>✓ Administración de Empresas</li>
+                        <li>✓ Ingeniería Comercial</li>
+                        <li>✓ Ingeniería Financiera</li>
+                        <li>✓ Contaduría Pública</li>
+                        <li>✓ Derecho</li>
+                        <li>✓ Ingeniería Agropecuaria</li>
+                        <li>✓ Ingeniería en Sistemas</li>
+                        <li>✓ Enfermería</li>
+                        <li>✓ Medicina Veterinaria y Zootécnica</li>
+                        <li>✓ Ciencias de la Educación</li>
+                    </ul>
+                </div>
+                <button class="btn btn-primary" onclick="startQuiz()">Comenzar Cuestionario</button>
+                <button class="btn btn-secondary" onclick="showSection('careers')">Ver Carreras</button>
+            </div>
+        </section>
+
+        <!-- Sección de Cuestionario -->
+        <section id="quiz" class="section">
+            <div class="quiz-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p class="progress-text"><span id="currentQuestion">1</span>/<span id="totalQuestions">25</span></p>
+                
+                <h2 id="questionTitle">Pregunta</h2>
+                <p id="questionText" class="question-text"></p>
+                
+                <div id="answersContainer" class="answers-container"></div>
+                
+                <div class="navigation-buttons">
+                    <button class="btn btn-secondary" onclick="previousQuestion()" id="prevBtn" style="display:none;">← Anterior</button>
+                    <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn">Siguiente →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Resultados -->
+        <section id="results" class="section">
+            <div class="results-container">
+                <h2>📊 Tus Resultados</h2>
+                
+                <div class="results-summary">
+                    <h3>Tu Carrera Recomendada:</h3>
+                    <div class="top-recommendation">
+                        <h4 id="topCareer"></h4>
+                        <div class="score-bar">
+                            <div class="score-fill" id="topScore"></div>
+                        </div>
+                        <p id="topScoreText" class="score-text"></p>
+                    </div>
+                </div>
+
+                <div class="all-results">
+                    <h3>Ranking de Compatibilidad:</h3>
+                    <div id="rankingContainer" class="ranking-container"></div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="showSection('careers')">Ver Detalles de Carreras</button>
+                    <button class="btn btn-secondary" onclick="resetQuiz()">Repetir Cuestionario</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Carreras -->
+        <section id="careers" class="section">
+            <div class="careers-container">
+                <h2>📚 Carreras FINI Yapacaní</h2>
+                <div id="careersGrid" class="careers-grid"></div>
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="showSection('welcome')">Volver al Inicio</button>
+                    <button class="btn btn-primary" onclick="showSection('quiz')">Hacer Cuestionario</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal de Carrera -->
+    <div id="careerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalCareerName"></h2>
+            <div id="modalCareerDetails"></div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
